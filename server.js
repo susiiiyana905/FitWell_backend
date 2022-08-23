@@ -39,8 +39,8 @@ app.use(errorHandler);
 
 const dotenv = require("dotenv");
 dotenv.config();
-const port = process.env.PORT || 8848;
+const port = process.env.PORT || 8001;
 
 app.listen(port, () => {
-  console.log("Server running on port: 8848...");
+  console.log("Server running on port: 8001...");
 });

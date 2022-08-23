@@ -5,7 +5,7 @@ const multer = require("multer");
 const storageNavigation = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "ExpenseTracker",
+    folder: "FitWell/Workout",
   },
 });
 

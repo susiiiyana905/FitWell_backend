@@ -5,7 +5,6 @@ const { verifyUser } = require("../middleware/authMiddleware");
 const {
   registerUser,
   loginUser,
-  googleSignIn,
   checkPassword,
   viewUser,
   changeProfilePicture,
@@ -17,8 +16,6 @@ const {
 router.post("/register", registerUser);
 
 router.post("/login", loginUser);
-
-router.post("/googleSignIn", googleSignIn);
 
 router.get("/checkPassword", verifyUser, checkPassword);
 

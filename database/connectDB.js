@@ -8,7 +8,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("MongoDB Connected on SmoothPlayer Cluster.");
+    console.log("MongoDB Connected on FitWell Cluster.");
   })
   .catch((error) => {
     console.log(error);

@@ -12,21 +12,22 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
 
-    profileName: {       
+    profileName: {
       type: String,
       trim: true,
     },
 
     profilePicture: {
       type: String,
-      default: "https://res.cloudinary.com/gaurishankar/image/upload/v1658148482/ExpenseTracker/p3o8edl8jnwvdhk5xjmx.png"
+      default:
+        "https://res.cloudinary.com/gaurishankar/image/upload/v1658148482/ExpenseTracker/p3o8edl8jnwvdhk5xjmx.png",
     },
 
     gender: {
       type: String,
-      default: ""
+      default: "",
     },
-    
+
     progressPublication: {
       type: Boolean,
       default: false,
@@ -34,8 +35,8 @@ const userSchema = new mongoose.Schema(
 
     passReset: {
       type: Date,
-      default: null
-    }
+      default: null,
+    },
   },
   {
     timestamps: true,

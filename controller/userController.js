@@ -95,43 +95,6 @@ const loginUser = (req, res) => {
   });
 };
 
-const googleSignIn = asyncHandler(async (req, res) => {
-  const { email, profilePicture, profileName } = req.body;
-
-  const userData = await user.findOne({ email: email });
-  if (userData != null) {
-    const userData = await user.findOne({ email: email });
-    const token = jwt.sign({ userId: userData._id }, "loginKey");
-    res.status(202).send({
-      token: token,
-      resM: "Login success.",
-      userData: userData,
-    });
-  } else {
-    const currentDate = new Date();
-    const previousMonth = new Date(currentDate.getTime() - 2592000000);
-
-    const newUser = await user.create({
-      email: email,
-      password: "google",
-      profilePicture: profilePicture,
-      profileName: profileName,
-    });
-
-    await progress.create({
-      user: newUser._id,
-      pmc: previousMonth,
-    });
-
-    const token = jwt.sign({ userId: newUser._id }, "loginKey");
-    res.status(202).send({
-      token: token,
-      resM: "Login success.",
-      userData: newUser,
-    });
-  }
-});
-
 const checkPassword = (req, res) => {
   user.findOne({ _id: req.userInfo._id }).then((userData) => {
     var changePassword = false;
@@ -282,7 +245,6 @@ const publishProgress = (req, res) => {
 module.exports = {
   registerUser,
   loginUser,
-  googleSignIn,
   checkPassword,
   viewUser,
   changeProfilePicture,

@@ -18,6 +18,7 @@ const filter = function (req, file, cb) {
     file.mimetype == "image/jpeg" ||
     file.mimetype == "application/octet-stream"
   ) {
+    {{}}
     cb(null, true);
   } else {
     cb(null, false);

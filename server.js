@@ -9,7 +9,7 @@ app.use(cors());
 require("./database/connectDB");
 
 app.get("/", (req, res) => {
-  res.send("Welcome to expense income tracker app.");
+  res.send("Welcome to FitWell app.");
 });
 
 const userRoute = require("./router/userRoute");
@@ -18,20 +18,20 @@ app.use("/user", userRoute);
 const tokenRoute = require("./router/tokenRoute");
 app.use("/token", tokenRoute);
 
-const expenseRoute = require("./router/expenseRoute");
-app.use("/expense", expenseRoute);
-
-const incomeRoute = require("./router/incomeRoute");
-app.use("/income", incomeRoute);
-
 const homeRoute = require("./router/homeRoute");
 app.use("/home", homeRoute);
 
-const achievementRoute = require("./router/achievementRoute");
-app.use("/achievement", achievementRoute);
+const exerciseType = require("./router/exerciseTypeRoute");
+app.use("/type", exerciseType);
 
-const progressRoute = require("./router/progressRoute");
-app.use("/progress", progressRoute);
+const exercise = require("./router/exerciseRoute");
+app.use("/exercise", exercise);
+
+const exerciseStep = require("./router/exerciseStepRoute");
+app.use("/step", exerciseStep);
+
+const completedExercise = require("./router/completedExerciseRoute");
+app.use("/completed", completedExercise);
 
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 app.use(notFound);

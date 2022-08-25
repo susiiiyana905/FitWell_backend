@@ -115,7 +115,8 @@ const myExercises = asyncHandler(async (req, res) => {
     }
   }
 
-  const myFavorite = await exercise.find({_id: {$in: favoriteSortedExercise}});
+  const myFavorite = await exercise.find({_id: {$in: favoriteSortedExercise}})
+  .populate("exerciseType");
 
   res.send({
     profilePicture: userData.profilePicture,

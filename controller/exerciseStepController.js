@@ -19,4 +19,14 @@ const addStep = asyncHandler(async (req, res) => {
   res.send({ resM: "Step Created" });
 });
 
-module.exports = { addStep };
+const exerciseSteps = asyncHandler(async (req, res) => {
+  const exerciseId = req.body.exerciseId;
+
+  const exerciseSteps = await exerciseStep
+    .find({ exerciseName: exerciseId })
+    .populate("exerciseName");
+
+  res.send(exerciseSteps);
+});
+
+module.exports = { addStep, exerciseSteps };

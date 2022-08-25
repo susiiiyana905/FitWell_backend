@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const exerciseType = require("../model/exerciseTypeModel");
+const exercise = require("../model/exerciseModel");
 const { cloudinary } = require("../utils/cloudinary");
 
 const addExerciseType = asyncHandler(async (req, res) => {
@@ -25,11 +26,19 @@ const deleteExerciseType = asyncHandler(async (req, res) => {
   const exerciseData = await exerciseType.findOne({ _id: exerciseTypeId });
 
   await cloudinary.uploader.destroy(
-    "FitWell/Workout/" + exerciseData.image.split("FitWell/Workout/")[1].split(".")[0]
+    "FitWell/Workout/" +
+      exerciseData.image.split("FitWell/Workout/")[1].split(".")[0]
   );
 
   await exerciseType.deleteOne({ _id: exerciseTypeId });
   res.send({ resM: "Exercise Type deleted" });
 });
 
-module.exports = { addExerciseType, deleteExerciseType };
+const getExerciseType = asyncHandler(async (req, res) => {
+  const exerciseTypes = await exerciseType.find();
+  const exercises = await exercise.find().populate("exerciseType");
+
+  res.send({ exerciseTypes: exerciseTypes, exercises: exercises });
+});
+
+module.exports = { addExerciseType, deleteExerciseType, getExerciseType };

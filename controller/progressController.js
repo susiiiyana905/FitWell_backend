@@ -11,7 +11,7 @@ const userProgress = asyncHandler(async (req, res) => {
     .findOne({ user: req.userInfo._id })
     .populate(
       "user",
-      "email profileName profilePicture gender profilePublication"
+      "email profileName profilePicture gender progressPublication"
     )
     .populate("oldAchievement", "name description")
     .populate("newAchievement", "name description");
@@ -65,7 +65,7 @@ const userCalculateProgress = asyncHandler(async (req, res) => {
 
   const currentDate = new Date();
   var previousMonthDate = 0;
-  
+
   if (
     month28.includes(
       parseInt(currentDate.toISOString().split("T")[0].split("-")[1])

@@ -1,5 +1,4 @@
 const asyncHandler = require("express-async-handler");
-const mongoose = require("mongoose");
 const exercise = require("../model/exerciseModel");
 
 const addExercise = asyncHandler(async (req, res) => {
@@ -24,4 +23,15 @@ const addExercise = asyncHandler(async (req, res) => {
 const deleteExercise = asyncHandler(async (req, res) => {
   const { name, description, image, exerciseType } = req.body;
 });
-module.exports = { addExercise, deleteExercise };
+
+const getExercises = asyncHandler(async (req, res) => {
+  const exerciseTypeId = req.body.exerciseTypeId;
+
+  const exercises = await exercise
+    .find({ exerciseType: exerciseTypeId })
+    .populate("exerciseType");
+
+  res.send(exercises);
+});
+
+module.exports = { addExercise, deleteExercise, getExercises };

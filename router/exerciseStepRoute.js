@@ -4,9 +4,11 @@ const upload = require("../utils/multerWorkout");
 const { verifyUser } = require("../middleware/authMiddleware");
 const {
   addStep,
-  deleteStep
+  exerciseSteps,
 } = require("../controller/exerciseStepController");
 
 router.post("/add", verifyUser, upload.single("workout"), addStep);
+
+router.post("/get", verifyUser, exerciseSteps);
 
 module.exports = router;

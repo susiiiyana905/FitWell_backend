@@ -18,9 +18,6 @@ app.use("/user", userRoute);
 const tokenRoute = require("./router/tokenRoute");
 app.use("/token", tokenRoute);
 
-const homeRoute = require("./router/homeRoute");
-app.use("/home", homeRoute);
-
 const exerciseType = require("./router/exerciseTypeRoute");
 app.use("/type", exerciseType);
 
@@ -32,6 +29,9 @@ app.use("/step", exerciseStep);
 
 const completedExercise = require("./router/completedExerciseRoute");
 app.use("/completed", completedExercise);
+
+const progressRoute = require("./router/progressRoute");
+app.use("/progress", progressRoute);
 
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 app.use(notFound);

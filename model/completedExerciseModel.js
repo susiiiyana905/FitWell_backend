@@ -6,6 +6,10 @@ const completedExerciseSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "exercise",
     },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: "user",
+    },
   },
   {
     timestamps: true,

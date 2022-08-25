@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const exerciseStep = require("../model/exerciseStepModel");
+const exercise = require("../model/exerciseModel");
 
 const addStep = asyncHandler(async (req, res) => {
   if (req.file == undefined) {
@@ -22,9 +23,13 @@ const addStep = asyncHandler(async (req, res) => {
 const exerciseSteps = asyncHandler(async (req, res) => {
   const exerciseId = req.body.exerciseId;
 
-  const exerciseSteps = await exerciseStep
+  const exerciseSteps1 = await exerciseStep
     .find({ exerciseName: exerciseId })
     .populate("exerciseName");
+
+    const exerciseSteps = await exercise.populate(exerciseSteps1, {
+      path: "exerciseName.exerciseType"
+    });
 
   res.send(exerciseSteps);
 });

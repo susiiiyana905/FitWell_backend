@@ -11,34 +11,6 @@ const progressSchema = new mongoose.Schema(
       type: Number,
       default: 10,
     },
-
-    tmp: {
-      type: Number,
-      default: 0,
-    },
-
-    pmp: {
-      type: Number,
-      default: 0,
-    },
-
-    oldAchievement: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: "achievement",
-      },
-    ],
-
-    newAchievement: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: "achievement",
-      },
-    ],
-
-    pmc: {
-      type: Date,
-    },
   },
   {
     timestamps: true,

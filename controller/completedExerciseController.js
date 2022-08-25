@@ -119,6 +119,7 @@ const myExercises = asyncHandler(async (req, res) => {
 
   res.send({
     profilePicture: userData.profilePicture,
+    todayProgressPoint: todayCompletedExercises.length*25,
     todayExercises: todayExercises,
     recentExercises: recentExercises,
     myFavorite: myFavorite,
